@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -113,9 +114,23 @@ public class StudentFormController {
         tblStudent.setItems(observableList);
     }
 
-    public void addOnAction(ActionEvent actionEvent) {
-        
-
+    public void addOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Student s = new Student(
+                txtStudentId.getText(),txtStudentName.getText(),txtEmail.getText(),txtContact.getText(),
+                txtAddress.getText(),txtNic.getText()
+        );
+        try {
+            if (CrudUtil.execute("INSERT INTO Student VALUES (?,?,?,?,?,?)",s.getStudentId(),s.getStudentName(),s.getEmail(),
+                    s.getContact(),s.getAddress(),s.getNic())){
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved!..").showAndWait();
+            }
+        }catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        loadMembers();
+        clear();
+        autoStudentId();
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
