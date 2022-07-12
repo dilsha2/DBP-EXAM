@@ -41,9 +41,6 @@ public class StudentFormController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
 
-        btnAdd.setDisable(true);
-        btnUpdate.setDisable(true);
-        btnDelete.setDisable(true);
 
         colStudentId.setCellValueFactory(new PropertyValueFactory("studentId"));
         colStudentName.setCellValueFactory(new PropertyValueFactory("studentName"));
@@ -70,8 +67,6 @@ public class StudentFormController {
         txtContact.clear();
         txtAddress.clear();
         txtNic.clear();
-        btnUpdate.setDisable(true);
-        btnDelete.setDisable(true);
         tblStudent.refresh();
     }
 
@@ -82,9 +77,6 @@ public class StudentFormController {
         txtContact.setText(s.getContact());
         txtAddress.setText(s.getAddress());
         txtNic.setText(s.getNic());
-        btnUpdate.setDisable(false);
-        btnDelete.setDisable(false);
-        btnAdd.setDisable(true);
     }
 
 
