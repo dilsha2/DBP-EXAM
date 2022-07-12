@@ -136,7 +136,31 @@ public class StudentFormController {
     public void deleteOnAction(ActionEvent actionEvent) {
     }
 
-    public void updateOnAction(ActionEvent actionEvent) {
+    public void updateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Student s= new Student(
+                txtStudentId.getText(),txtStudentName.getText(),txtEmail.getText(),txtContact.getText(),
+                txtAddress.getText(),txtNic.getText()
+        );
+
+        try {
+            boolean isUpdated=CrudUtil.execute("UPDATE Student SET student_name=?, email=?, contact=?, address=?, nic=? WHERE student_id=? ", s.getStudentName(), s.getEmail(), s.getContact(),
+                    s.getAddress(),s.getNic(),s.getStudentId());
+
+            if(isUpdated){
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated!").showAndWait();
+            }else{
+                new Alert(Alert.AlertType.WARNING, "Try Again!").showAndWait();
+            }
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        loadMembers();
+        clear();
+        autoStudentId();
     }
 
     public void clearOnAction(ActionEvent actionEvent) {
