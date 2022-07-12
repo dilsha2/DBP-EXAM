@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,6 +14,7 @@ import util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class StudentFormController {
     public JFXTextField txtStudentId;
@@ -77,10 +79,10 @@ public class StudentFormController {
     }
 
     private void autoStudentId() throws SQLException, ClassNotFoundException {
-        ResultSet result = CrudUtil.execute("SELECT student_id FROM Student ORDER BY student_id DESC LIMIT 1");
+        ResultSet result = CrudUtil.execute("SELECT student_id FROM Student ORDER BY Student_id DESC LIMIT 1");
 
         if (result.next()){
-            String id = result.getString("student_id");
+            String id = result.getString("Student_id");
             int i =id.length();
 
             String txt= id.substring(0,1);
@@ -133,7 +135,19 @@ public class StudentFormController {
         autoStudentId();
     }
 
-    public void deleteOnAction(ActionEvent actionEvent) {
+    public void deleteOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES,ButtonType.NO);
+
+        Optional<ButtonType> buttonType = alert.showAndWait();
+
+        if(buttonType.get().equals(ButtonType.YES)){
+            CrudUtil.execute("DELETE FROM Student WHERE Student_id=?",txtStudentId.getText());
+
+            loadMembers();
+            clear();
+            autoStudentId();
+
+        }
     }
 
     public void updateOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -164,5 +178,6 @@ public class StudentFormController {
     }
 
     public void clearOnAction(ActionEvent actionEvent) {
+        clear();
     }
 }
