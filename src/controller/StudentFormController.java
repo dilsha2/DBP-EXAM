@@ -49,9 +49,7 @@ public class StudentFormController {
         colNic.setCellValueFactory(new PropertyValueFactory("nic"));
 
         loadMembers();
-        autoStudentId();
 
-        //tblAddMember.setItems();
         tblStudent.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 loadField(newValue);
@@ -80,26 +78,6 @@ public class StudentFormController {
         txtNic.setText(s.getNic());
     }
 
-    private void autoStudentId() throws SQLException, ClassNotFoundException {
-        ResultSet result = CrudUtil.execute("SELECT student_id FROM Student ORDER BY Student_id DESC LIMIT 1");
-
-        if (result.next()){
-            String id = result.getString("Student_id");
-            int i =id.length();
-
-            String txt= id.substring(0,1);
-            String num=id.substring(1,i);
-            int n=Integer.parseInt(num);
-            n++;
-
-            String snum=Integer.toString(n);
-            String ftxt=txt+snum;
-
-            txtStudentId.setText(ftxt);
-        }else{
-            txtStudentId.setText("M1");
-        }
-    }
 
     private void loadMembers() throws SQLException, ClassNotFoundException {
         ObservableList observableList = FXCollections.observableArrayList();
@@ -161,7 +139,6 @@ public class StudentFormController {
         }
         loadMembers();
         clear();
-        autoStudentId();
     }
 
     public void deleteOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -174,7 +151,6 @@ public class StudentFormController {
 
             loadMembers();
             clear();
-            autoStudentId();
 
         }
     }
@@ -203,7 +179,6 @@ public class StudentFormController {
         }
         loadMembers();
         clear();
-        autoStudentId();
     }
 
     public void clearOnAction(ActionEvent actionEvent) {
