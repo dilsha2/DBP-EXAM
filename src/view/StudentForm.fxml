@@ -18,41 +18,41 @@
          </font>
       </Label>
       <Separator layoutX="244.0" layoutY="48.0" prefWidth="200.0" />
-      <JFXTextField labelFloat="true" layoutX="14.0" layoutY="68.0" promptText="Student_id" />
-      <JFXTextField labelFloat="true" layoutX="177.0" layoutY="68.0" promptText="Student_name" />
-      <JFXTextField labelFloat="true" layoutX="352.0" layoutY="68.0" promptText="email" />
-      <JFXTextField labelFloat="true" layoutX="521.0" layoutY="68.0" promptText="Contact" />
-      <JFXTextField labelFloat="true" layoutX="14.0" layoutY="111.0" promptText="Address" />
-      <JFXTextField labelFloat="true" layoutX="177.0" layoutY="111.0" promptText="Nic" />
-      <JFXTextField labelFloat="true" layoutX="14.0" layoutY="163.0" prefHeight="25.0" prefWidth="269.0" promptText="Enter Student id to Search" />
-      <JFXButton layoutX="312.0" layoutY="163.0" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #00ff2b;" text="ADD">
+      <JFXTextField fx:id="txtStudentId" labelFloat="true" layoutX="14.0" layoutY="68.0" promptText="Student_id" />
+      <JFXTextField fx:id="txtStudentName" labelFloat="true" layoutX="177.0" layoutY="68.0" promptText="Student_name" />
+      <JFXTextField fx:id="txtEmail" labelFloat="true" layoutX="352.0" layoutY="68.0" promptText="email" />
+      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="521.0" layoutY="68.0" promptText="Contact" />
+      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="14.0" layoutY="111.0" promptText="Address" />
+      <JFXTextField fx:id="txtNic" labelFloat="true" layoutX="177.0" layoutY="111.0" promptText="Nic" />
+      <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="14.0" layoutY="163.0" prefHeight="25.0" prefWidth="269.0" promptText="Enter Student id to Search" />
+      <JFXButton layoutX="312.0" layoutY="163.0" onAction="#addOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #00ff2b;" text="ADD">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="498.0" layoutY="163.0" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #ff1717;" text="Delete" textFill="#0a0606">
+      <JFXButton layoutX="498.0" layoutY="163.0" onAction="#deleteOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #ff1717;" text="Delete" textFill="#0a0606">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="404.0" layoutY="163.0" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #4d29d3;" text="Update">
+      <JFXButton layoutX="404.0" layoutY="163.0" onAction="#updateOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #4d29d3;" text="Update">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="589.0" layoutY="163.0" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #25ffff;" text="Clear" textFill="#0d1717">
+      <JFXButton layoutX="589.0" layoutY="163.0" onAction="#clearOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #25ffff;" text="Clear" textFill="#0d1717">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="14.0" layoutY="211.0" prefHeight="263.0" prefWidth="660.0">
+      <TableView fx:id="tblStudent" layoutX="14.0" layoutY="211.0" prefHeight="263.0" prefWidth="660.0">
         <columns>
-          <TableColumn prefWidth="67.0" text="Stident_id" />
-          <TableColumn prefWidth="121.0" text="Student_name" />
-            <TableColumn prefWidth="113.0" text="Email" />
-            <TableColumn prefWidth="126.0" text="Contact" />
-            <TableColumn prefWidth="114.0" text="Address" />
-            <TableColumn prefWidth="118.0" text="Nic" />
+          <TableColumn fx:id="colStudentId" prefWidth="67.0" text="Stident_id" />
+          <TableColumn fx:id="colStudentName" prefWidth="121.0" text="Student_name" />
+            <TableColumn fx:id="colEmail" prefWidth="113.0" text="Email" />
+            <TableColumn fx:id="colContact" prefWidth="126.0" text="Contact" />
+            <TableColumn fx:id="colAddress" prefWidth="114.0" text="Address" />
+            <TableColumn fx:id="colNic" prefWidth="118.0" text="Nic" />
         </columns>
       </TableView>
    </children>
