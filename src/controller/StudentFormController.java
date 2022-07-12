@@ -3,6 +3,8 @@ package controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -114,6 +116,33 @@ public class StudentFormController {
             );
         }
         tblStudent.setItems(observableList);
+
+        tblStudent.setItems(observableList);
+
+        FilteredList<Student> filterData = new FilteredList<Student>(observableList, b -> true);
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterData.setPredicate(Student -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+
+                if (Student.getStudentId().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else
+                    return false;
+
+
+            });
+        });
+
+        SortedList<Student> sortedData = new SortedList<>(filterData);
+
+        sortedData.comparatorProperty().bind(tblStudent.comparatorProperty());
+
+        tblStudent.setItems(sortedData);
     }
 
     public void addOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -180,4 +209,5 @@ public class StudentFormController {
     public void clearOnAction(ActionEvent actionEvent) {
         clear();
     }
+
 }
