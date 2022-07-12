@@ -1,5 +1,6 @@
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,8 +34,9 @@ public class StudentFormController {
     public TableColumn colContact;
     public TableColumn colAddress;
     public TableColumn colNic;
-
-
+    public JFXButton btnAdd;
+    public JFXButton btnDelete;
+    public JFXButton btnUpdate;
 
 
     public void initialize() throws SQLException, ClassNotFoundException {

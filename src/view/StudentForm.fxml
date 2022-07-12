@@ -25,17 +25,17 @@
       <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="14.0" layoutY="111.0" promptText="Address" />
       <JFXTextField fx:id="txtNic" labelFloat="true" layoutX="177.0" layoutY="111.0" promptText="Nic" />
       <JFXTextField fx:id="txtSearch" labelFloat="true" layoutX="14.0" layoutY="163.0" prefHeight="25.0" prefWidth="269.0" promptText="Enter Student id to Search" />
-      <JFXButton layoutX="312.0" layoutY="163.0" onAction="#addOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #00ff2b;" text="ADD">
+      <JFXButton fx:id="btnAdd" layoutX="312.0" layoutY="163.0" onAction="#addOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #00ff2b;" text="ADD">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="498.0" layoutY="163.0" onAction="#deleteOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #ff1717;" text="Delete" textFill="#0a0606">
+      <JFXButton fx:id="btnDelete" layoutX="498.0" layoutY="163.0" onAction="#deleteOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #ff1717;" text="Delete" textFill="#0a0606">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="404.0" layoutY="163.0" onAction="#updateOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #4d29d3;" text="Update">
+      <JFXButton fx:id="btnUpdate" layoutX="404.0" layoutY="163.0" onAction="#updateOnAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #4d29d3;" text="Update">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
